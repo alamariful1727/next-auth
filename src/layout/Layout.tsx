@@ -1,5 +1,5 @@
 import { PropsWithChildren } from "react";
-import Header from "../components/header";
+import Header from "@components/header";
 
 export const Layout = ({ children }: PropsWithChildren) => {
   return (
