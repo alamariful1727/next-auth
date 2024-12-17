@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint", // ESLint extension
+    "esbenp.prettier-vscode", // Prettier extension
+    "bradlc.vscode-tailwindcss", // Tailwind CSS IntelliSense
+    "aaron-bond.better-comments", // Better Comments
+    "dsznajder.es7-react-js-snippets", // ES7 React/Redux/GraphQL/React-Native snippets
+    "Zignd.html-css-class-completion", // HTML CSS Support
+    "PKief.material-icon-theme", // Material Icon
+    "xabikos.JavaScriptSnippets" // JavaScript (ES6) code snippets
+  ]
+}
