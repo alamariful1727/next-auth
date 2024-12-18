@@ -6,7 +6,7 @@ export const Layout = ({ children }: PropsWithChildren) => {
     <div>
       <div className="min-h-full">
         <Header />
-        <div className="py-10">{children}</div>
+        <div className="px-4 py-10 sm:px-6 lg:px-8">{children}</div>
       </div>
     </div>
   );

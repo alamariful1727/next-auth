@@ -30,14 +30,14 @@ function classNames(...classes: string[]) {
 export const Header = () => {
   return (
     <Disclosure as="nav" className="border-b border-gray-200 bg-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 justify-between">
           <div className="flex">
             <div className="flex shrink-0 items-center">
               <img
-                alt="Your Company"
-                src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
-                className="h-8 w-auto"
+                alt="Alert Ready Manager"
+                src="https://www.alertready.ca/wp-content/uploads/2021/09/Alert-Ready-Main.png"
+                className="h-16 w-auto"
               />
             </div>
             <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">

@@ -1,0 +1,18 @@
+{
+  "editor.formatOnSave": true, // Enable formatting on save
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true // Automatically fix ESLint issues on save
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "tailwindCSS.experimental.classRegex": [
+    "tw`([^`]*)", // For Tailwind classes inside template literals
+    "tw\\(\"([^\"]*)" // For Tailwind classes inside functions
+  ],
+  "prettier.requireConfig": true // Use Prettier only when a config file is present
+}
