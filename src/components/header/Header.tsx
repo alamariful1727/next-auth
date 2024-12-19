@@ -9,6 +9,7 @@ import {
 } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link, NavLink } from "react-router";
+import clsx from "clsx";
 
 const user = {
   name: "Tom Cook",
@@ -23,10 +24,6 @@ const userNavigation = [
   { name: "Change Language", href: "#" },
   { name: "Sign out", href: "#" },
 ];
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
 
 export const Header = () => {
   return (
@@ -44,17 +41,17 @@ export const Header = () => {
                 />
               </Link>
             </div>
-            <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
+            <div className="hidden sm:-my-px sm:ml-8 sm:flex sm:space-x-8">
               {navigation.map((item) => (
                 <NavLink
                   key={item.name}
                   to={item.href}
                   className={({ isActive }) =>
-                    classNames(
+                    clsx(
                       isActive
                         ? "border-indigo-500 text-gray-900"
                         : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
-                      "inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium",
+                      "inline-flex items-center border-b-2 px-1 pt-1 text-base font-medium",
                     )
                   }
                 >
@@ -118,11 +115,11 @@ export const Header = () => {
               key={item.name}
               to={item.href}
               className={({ isActive }) =>
-                classNames(
+                clsx(
+                  "block border-l-4 text-base font-medium",
                   isActive
                     ? "border-indigo-500 bg-indigo-50 text-indigo-700"
                     : "border-transparent text-gray-600 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-800",
-                  "block border-l-4 text-base font-medium",
                 )
               }
             >

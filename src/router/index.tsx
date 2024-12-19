@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router";
 import RootLayout from "@layouts/RootLayout";
+import AlertsLayout from "@layouts/AlertsLayout";
 import HomePage from "@pages/home";
 import AlertsPage from "@pages/alerts";
 import UsersPage from "@pages/users";
@@ -10,7 +11,7 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<RootLayout />}>
           <Route index element={<HomePage />} />
-          <Route path="alerts">
+          <Route path="alerts" element={<AlertsLayout />}>
             <Route index element={<AlertsPage />} />
           </Route>
           <Route path="users">

@@ -6,7 +6,7 @@ const RootLayout = () => {
     <div>
       <div className="min-h-full">
         <Header />
-        <div className="p-4 sm:px-6 lg:px-8">
+        <div>
           <Outlet />
         </div>
       </div>
