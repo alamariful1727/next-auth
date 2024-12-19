@@ -8,11 +8,11 @@ const UsersPage = () => {
         <div className="flex items-center space-x-4">
           <div>Search</div>
           <div className="space-x-5">
-            <Button type="default-dark" size="small">
+            <Button theme="default-dark" size="small">
               Dark
             </Button>
             <Button>Export as .csv</Button>
-            <Button type="primary" size="large">
+            <Button theme="primary" size="large">
               New User
             </Button>
           </div>

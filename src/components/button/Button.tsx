@@ -4,19 +4,19 @@ import React from "react";
 
 type ButtonType = "default" | "default-dark" | "primary";
 type ButtonSize = "small" | "medium" | "large";
-interface IButtonProps {
+interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
-  type?: ButtonType;
+  theme?: ButtonType;
   size?: ButtonSize;
-  disabled?: boolean;
 }
 
 export const Button = ({
   children,
   className,
-  type = "default",
+  theme = "default",
   size = "medium",
   disabled,
+  ...rest
 }: React.PropsWithChildren<IButtonProps>) => {
   return (
     <HeadlessButton
@@ -25,10 +25,10 @@ export const Button = ({
         "rounded font-semibold shadow-sm",
         {
           "bg-white text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-100":
-            type === "default",
-          "bg-gray-700 text-white hover:bg-gray-800": type === "default-dark",
+            theme === "default",
+          "bg-gray-700 text-white hover:bg-gray-800": theme === "default-dark",
           "bg-red-600 text-white shadow-sm hover:bg-red-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600":
-            type === "primary",
+            theme === "primary",
         },
         {
           "px-2.5 py-1.5 text-sm": size === "small",
@@ -40,6 +40,7 @@ export const Button = ({
         },
         className,
       )}
+      {...rest}
     >
       {children}
     </HeadlessButton>
