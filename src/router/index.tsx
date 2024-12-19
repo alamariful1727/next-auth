@@ -1,27 +1,37 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router";
-import RootLayout from "@layouts/RootLayout";
+import { createBrowserRouter, Navigate } from "react-router";
 import AlertsLayout from "@layouts/AlertsLayout";
-import HomePage from "@pages/home";
+import RootLayout from "@layouts/RootLayout";
 import AlertsPage from "@pages/alerts";
+import HomePage from "@pages/home";
 import UsersPage from "@pages/users";
 
-const Router = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<RootLayout />}>
-          <Route index element={<HomePage />} />
-          <Route path="alerts" element={<AlertsLayout />}>
-            <Route index element={<AlertsPage />} />
-          </Route>
-          <Route path="users">
-            <Route index element={<UsersPage />} />
-          </Route>
-          <Route path="*" element={<Navigate to="/" replace={true} />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  );
-};
+const Router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />,
+    // errorElement: <RootErrorBoundary />,
+    children: [
+      {
+        index: true,
+        element: <HomePage />,
+      },
+      {
+        path: "alerts",
+        element: <AlertsLayout />,
+        children: [
+          {
+            index: true,
+            element: <AlertsPage />,
+          },
+        ],
+      },
+      {
+        path: "users",
+        element: <UsersPage />,
+      },
+      { path: "*", element: <Navigate to="/" replace={true} /> },
+    ],
+  },
+]);
 
 export default Router;
