@@ -8,14 +8,15 @@ import {
   MenuItems,
 } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Link, NavLink } from "react-router";
 
 const user = {
   name: "Tom Cook",
   email: "tom@example.com",
 };
 const navigation = [
-  { name: "Users", href: "/users", current: true },
-  { name: "Alerts", href: "/alerts", current: false },
+  { name: "Users", href: "/users" },
+  { name: "Alerts", href: "/alerts" },
 ];
 const userNavigation = [
   { name: "Change Password", href: "#" },
@@ -34,27 +35,31 @@ export const Header = () => {
         <div className="flex h-16 justify-between">
           <div className="flex">
             <div className="flex shrink-0 items-center">
-              <img
-                alt="Alert Ready Manager"
-                src="https://www.alertready.ca/wp-content/uploads/2021/09/Alert-Ready-Main.png"
-                className="h-16 w-auto"
-              />
+              <Link to="/">
+                <DisclosureButton
+                  as="img"
+                  alt="Alert Ready Manager"
+                  src="https://www.alertready.ca/wp-content/uploads/2021/09/Alert-Ready-Main.png"
+                  className="h-16 w-auto"
+                />
+              </Link>
             </div>
             <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
               {navigation.map((item) => (
-                <a
+                <NavLink
                   key={item.name}
-                  href={item.href}
-                  aria-current={item.current ? "page" : undefined}
-                  className={classNames(
-                    item.current
-                      ? "border-indigo-500 text-gray-900"
-                      : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
-                    "inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium",
-                  )}
+                  to={item.href}
+                  className={({ isActive }) =>
+                    classNames(
+                      isActive
+                        ? "border-indigo-500 text-gray-900"
+                        : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
+                      "inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium",
+                    )
+                  }
                 >
                   {item.name}
-                </a>
+                </NavLink>
               ))}
             </div>
           </div>
@@ -109,20 +114,22 @@ export const Header = () => {
       <DisclosurePanel className="sm:hidden">
         <div className="space-y-1 pb-3 pt-2">
           {navigation.map((item) => (
-            <DisclosureButton
+            <NavLink
               key={item.name}
-              as="a"
-              href={item.href}
-              aria-current={item.current ? "page" : undefined}
-              className={classNames(
-                item.current
-                  ? "border-indigo-500 bg-indigo-50 text-indigo-700"
-                  : "border-transparent text-gray-600 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-800",
-                "block border-l-4 py-2 pl-3 pr-4 text-base font-medium",
-              )}
+              to={item.href}
+              className={({ isActive }) =>
+                classNames(
+                  isActive
+                    ? "border-indigo-500 bg-indigo-50 text-indigo-700"
+                    : "border-transparent text-gray-600 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-800",
+                  "block border-l-4 text-base font-medium",
+                )
+              }
             >
-              {item.name}
-            </DisclosureButton>
+              <DisclosureButton as="div" className="py-2 pl-3 pr-4">
+                {item.name}
+              </DisclosureButton>
+            </NavLink>
           ))}
         </div>
         <div className="border-t border-gray-200 pb-3 pt-4">
