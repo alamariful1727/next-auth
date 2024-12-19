@@ -6,7 +6,7 @@ import AlertsTable from "./components/AlertsTable";
 
 const AlertsPage = () => {
   return (
-    <div className="space-y-5">
+    <div className="container mx-auto space-y-5">
       <div className="flex justify-between">
         <AlertsFilters />
         <div className="flex space-x-5">

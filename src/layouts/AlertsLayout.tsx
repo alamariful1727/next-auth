@@ -16,7 +16,7 @@ const AlertsLayout = () => {
   return (
     <div className="space-y-5">
       <div className="flex h-14 items-center border-b border-gray-200 bg-white">
-        <div className="-mb-px flex h-full items-center space-x-8 px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto -mb-px flex h-full items-center space-x-8 px-4 sm:px-0">
           {navigation.map(({ name, to, type }) => (
             <NavLink
               key={name}

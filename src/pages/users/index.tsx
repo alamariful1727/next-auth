@@ -2,7 +2,7 @@ import { Button } from "@components/index";
 
 const UsersPage = () => {
   return (
-    <div className="space-y-5">
+    <div className="container mx-auto space-y-5">
       <div className="flex items-center justify-between">
         <div>Filters</div>
         <div className="flex items-center space-x-4">

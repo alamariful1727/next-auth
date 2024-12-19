@@ -28,7 +28,7 @@ const userNavigation = [
 export const Header = () => {
   return (
     <Disclosure as="nav" className="border-b border-gray-200 bg-white">
-      <div className="mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-0">
         <div className="flex h-16 justify-between">
           <div className="flex">
             <div className="flex shrink-0 items-center">
