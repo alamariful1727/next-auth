@@ -33,9 +33,7 @@ const AlertsLayout = () => {
           ))}
         </div>
       </div>
-      <div>
-        <Outlet />
-      </div>
+      <Outlet />
     </div>
   );
 };

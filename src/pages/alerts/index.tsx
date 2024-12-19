@@ -9,7 +9,7 @@ const AlertsPage = () => {
     <div className="container mx-auto space-y-5">
       <div className="flex justify-between">
         <AlertsFilters />
-        <div className="flex space-x-5">
+        <div className="flex items-center space-x-5">
           <AlertsSearch />
           <AlertsExport />
         </div>
