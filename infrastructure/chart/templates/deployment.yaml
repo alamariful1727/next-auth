@@ -1,0 +1,73 @@
+apiVersion: {{ .Values.deployment.apiVersion }}
+kind: Deployment
+metadata:
+  name: {{ required "A valid value for product is required!" .Values.product | lower }}
+  namespace: {{ .Values.team }}-{{ .Values.environment }}
+  labels:
+    {{- include "micro-services.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicas.min }}
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      {{- include "micro-services.selector-labels" . | nindent 6 }}
+  minReadySeconds: 10
+  template:
+    metadata:
+      annotations:
+        config/checksum: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+      labels:
+        {{- include "micro-services.labels" . | nindent 8 }}
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                    - {{ required "A valid value for product is required!" .Values.product | lower }}
+              topologyKey: kubernetes.io/hostname
+            weight: 100
+      imagePullSecrets:
+      - name: regcred
+      containers:
+      - name: {{ required "A valid value for product is required!" .Values.product | lower }}
+        image: "{{- include "docker.image" . }}"
+        ports:
+        - containerPort: {{ .Values.port }}
+          name: http
+          protocol: TCP
+        envFrom:
+        - configMapRef:
+            name: {{ required "A valid value for product is required!" .Values.product | lower -}}-base-config
+        {{- if .Values.additionalConfigmaps }}
+          {{- .Values.additionalEnvFrom | nindent 8 -}}
+        {{ end -}}
+        resources:
+          limits:
+            cpu: {{ .Values.resources.limits.cpu | quote }}
+            memory: {{ .Values.resources.limits.memory | quote }}
+          requests:
+            cpu: {{ .Values.resources.requests.cpu | quote }}
+            memory: {{ .Values.resources.requests.memory | quote }}
+        # livenessProbe:
+        #    httpGet:
+        #      path: {{ .Values.checks.health | quote }}
+        #      port: {{ .Values.port }}
+        #    initialDelaySeconds: 5
+        #    timeoutSeconds: 5
+        #    periodSeconds: 10
+        # readinessProbe:
+        #    httpGet:
+        #      path: {{ .Values.checks.ready | quote }}
+        #      port: {{ .Values.port }}
+        #    initialDelaySeconds: 5
+        #    timeoutSeconds: 5
+        #    periodSeconds: 10
