@@ -11,7 +11,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css}\"",
-    "preview": "vite preview --port 8080"
+    "start": "vite preview --port 8080"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
