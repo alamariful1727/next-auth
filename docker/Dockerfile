@@ -35,4 +35,4 @@ WORKDIR /home/node/app
 COPY --from=appbuilder /home/node/app .
 # RUN ls -la
 USER node
-CMD ["npm","preview"]
+CMD ["npm", "run", "preview"]
