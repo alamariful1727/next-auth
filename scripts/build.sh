@@ -20,7 +20,7 @@ if [ "${PUSH_IMAGE:-true}" = "true" ]; then
 
     jfrog rt bp ${BUILD_NAME} ${BUILD_NUMBER}
 
-    jfrog rt bs ${BUILD_NAME} ${BUILD_NUMBER}
+    #jfrog rt bs ${BUILD_NAME} ${BUILD_NUMBER}
   fi
 else
   echo "Pushing image is disabled"
