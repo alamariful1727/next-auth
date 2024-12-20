@@ -1,50 +1,57 @@
-# React + TypeScript + Vite
+# Manager UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+It's the new version of the application.
 
-Currently, two official plugins are available:
+Figma design : [click here](<https://www.figma.com/proto/3Xk3Kl5HrjmDHNCL305uak/FIGMA-alert-ready-manager-(1)?node-id=1758-15403&starting-point-node-id=1758%3A15403&show-proto-sidebar=1>)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Environment Files (.env)
 
-## Expanding the ESLint configuration
+[Env Variables and Modes](https://vite.dev/guide/env-and-mode)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Vite uses dotenv to load additional environment variables from the following files in your environment directory:
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+.env                # loaded in all cases
+.env.local          # loaded in all cases, ignored by git
+.env.[mode]         # only loaded in specified mode
+.env.[mode].local   # only loaded in specified mode, ignored by git
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+In this project, we've 3 different environments.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+```bash
+.env.development # Works locally and development
+.env.staging # Works in staging
+.env.production # Works in production
+```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+### Rules to add environment variables
+
+E.g: Add a variable named `VITE_APP_TITLE` in the environment file.
+
+```bash
+VITE_APP_TITLE=Alert Ready - Manager (Development)
+```
+
+Use this variable like this below:
+
+HTML:
+
+```html
+<title>%VITE_APP_TITLE%</title>
+```
+
+Typescript:
+
+```tsx
+console.log(import.meta.env.VITE_APP_TITLE);
+```
+
+_Also add type for environment variable `vite-env.d.ts` like below:_
+
+```tsx
+interface ImportMetaEnv {
+  readonly VITE_APP_TITLE: string;
+  // more env variables...
+}
 ```

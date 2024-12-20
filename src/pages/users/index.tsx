@@ -1,6 +1,7 @@
 import { Button } from "@components/index";
 
 const UsersPage = () => {
+  console.log(import.meta.env.VITE_APP_TITLE);
   return (
     <div className="container mx-auto mt-5 space-y-5">
       <div className="flex items-center justify-between">
