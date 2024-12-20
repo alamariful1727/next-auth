@@ -3,11 +3,16 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Button } from "@components/index";
 
 const HomePage = () => {
-  const { isAuthenticated, user, logout } = useAuth0();
+  const { isAuthenticated, user, logout, loginWithRedirect } = useAuth0();
+
+  const handleLogin = async () => {
+    await loginWithRedirect();
+  };
 
   const handleLogout = async () => {
     await logout({ logoutParams: { returnTo: window.location.origin } });
   };
+
   return (
     <div className="container mx-auto">
       {isAuthenticated ? (
@@ -19,7 +24,12 @@ const HomePage = () => {
           </Button>
         </div>
       ) : (
-        <p>Welcome to the home page!</p>
+        <div className="mt-10 flex flex-col items-center space-y-2">
+          <p>Welcome to the home page!</p>
+          <Button theme="primary" onClick={handleLogin}>
+            Login
+          </Button>
+        </div>
       )}
     </div>
   );
