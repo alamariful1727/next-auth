@@ -21,7 +21,10 @@ RUN cat /home/node/app/.npmrc
 # For debugging
 #RUN ls -la
 
-RUN npm install && npm run build
+RUN node --version
+RUN npm --version
+
+RUN npm install --verbose && npm run build
 
 
 # For consitency we remove the .npmrc file even though it won't be copied to production image
