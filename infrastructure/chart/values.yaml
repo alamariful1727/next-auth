@@ -33,9 +33,9 @@ resources:
 basePath:
   - "/managerui"
 
-# checks:
-#   health: "/healthz"
-#   ready: "/healthz"
+checks:
+  health: "/"
+  ready: "/"
 
 additionalConfigmaps: |
   apiVersion: v1

@@ -57,17 +57,17 @@ spec:
           requests:
             cpu: {{ .Values.resources.requests.cpu | quote }}
             memory: {{ .Values.resources.requests.memory | quote }}
-        # livenessProbe:
-        #    httpGet:
-        #      path: {{ .Values.checks.health | quote }}
-        #      port: {{ .Values.port }}
-        #    initialDelaySeconds: 5
-        #    timeoutSeconds: 5
-        #    periodSeconds: 10
-        # readinessProbe:
-        #    httpGet:
-        #      path: {{ .Values.checks.ready | quote }}
-        #      port: {{ .Values.port }}
-        #    initialDelaySeconds: 5
-        #    timeoutSeconds: 5
-        #    periodSeconds: 10
+        livenessProbe:
+           httpGet:
+             path: {{ .Values.checks.health | quote }}
+             port: {{ .Values.port }}
+           initialDelaySeconds: 5
+           timeoutSeconds: 5
+           periodSeconds: 10
+        readinessProbe:
+           httpGet:
+             path: {{ .Values.checks.ready | quote }}
+             port: {{ .Values.port }}
+           initialDelaySeconds: 5
+           timeoutSeconds: 5
+           periodSeconds: 10
