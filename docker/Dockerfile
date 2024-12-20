@@ -24,7 +24,7 @@ RUN cat /home/node/app/.npmrc
 RUN node --version
 RUN npm --version
 
-RUN npm ci --verbose && npm run build
+RUN npm install --verbose && npm run build
 
 
 # For consitency we remove the .npmrc file even though it won't be copied to production image
@@ -33,6 +33,8 @@ RUN rm /home/node/app/.npmrc
 FROM $DOCKER_REGISTRY/node:22-alpine3.19
 WORKDIR /home/node/app
 COPY --from=appbuilder /home/node/app .
+
+RUN chown -R node:node /home/node/app
 # RUN ls -la
 USER node
 CMD ["npm", "start"]
