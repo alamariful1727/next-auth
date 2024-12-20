@@ -34,8 +34,8 @@ basePath:
   - "/managerui"
 
 checks:
-  health: "/"
-  ready: "/"
+  health: "/healthz"
+  ready: "/healthz"
 
 additionalConfigmaps: |
   apiVersion: v1
