@@ -1,57 +1,36 @@
-# Manager UI
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-It's the new version of the application.
+## Getting Started
 
-Figma design : [click here](<https://www.figma.com/proto/3Xk3Kl5HrjmDHNCL305uak/FIGMA-alert-ready-manager-(1)?node-id=1758-15403&starting-point-node-id=1758%3A15403&show-proto-sidebar=1>)
-
-## Environment Files (.env)
-
-[Env Variables and Modes](https://vite.dev/guide/env-and-mode)
-
-Vite uses dotenv to load additional environment variables from the following files in your environment directory:
+First, run the development server:
 
 ```bash
-.env                # loaded in all cases
-.env.local          # loaded in all cases, ignored by git
-.env.[mode]         # only loaded in specified mode
-.env.[mode].local   # only loaded in specified mode, ignored by git
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-In this project, we've 3 different environments.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```bash
-.env.development # Works locally and development
-.env.staging # Works in staging
-.env.production # Works in production
-```
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-### Rules to add environment variables
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-E.g: Add a variable named `VITE_APP_TITLE` in the environment file.
+## Learn More
 
-```bash
-VITE_APP_TITLE=Alert Ready - Manager (Development)
-```
+To learn more about Next.js, take a look at the following resources:
 
-Use this variable like this below:
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-HTML:
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-```html
-<title>%VITE_APP_TITLE%</title>
-```
+## Deploy on Vercel
 
-Typescript:
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-```tsx
-console.log(import.meta.env.VITE_APP_TITLE);
-```
-
-_Also add type for environment variable `vite-env.d.ts` like below:_
-
-```tsx
-interface ImportMetaEnv {
-  readonly VITE_APP_TITLE: string;
-  // more env variables...
-}
-```
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
