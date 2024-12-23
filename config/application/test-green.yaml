@@ -1,2 +1,2 @@
 deployment: 
-  dnsPrefix: live-testing
+  dnsPrefix: managerui-testing

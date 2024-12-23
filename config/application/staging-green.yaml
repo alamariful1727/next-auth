@@ -1,2 +1,2 @@
 deployment: 
-  dnsPrefix: live-staging
+  dnsPrefix: managerui-staging

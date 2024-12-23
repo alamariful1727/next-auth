@@ -1,2 +1,2 @@
 deployment:  
-  dnsPrefix: live-integration
+  dnsPrefix: managerui-integration

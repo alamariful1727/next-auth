@@ -1,8 +1,8 @@
 deployment:
-  dnsPrefix: live
+  dnsPrefix: managerui-integration
   dnsPostfix: alertready.ca
   apiVersion: apps/v1
-  clusterPrefix: ui
+  clusterPrefix: managerui
   clusterPostfix: naads.ca
 
 port: 8080
@@ -31,7 +31,7 @@ resources:
     memory: "256Mi"
 
 basePath:
-  - "/managerui"
+  - "/"
 
 checks:
   health: "/healthz"
