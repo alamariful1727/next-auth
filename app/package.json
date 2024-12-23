@@ -11,9 +11,10 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css}\"",
-    "preview": "vite preview"
+    "start": "vite preview --outDir dist"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^2.2.4",
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
     "react": "^18.3.1",

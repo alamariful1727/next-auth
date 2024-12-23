@@ -1,0 +1,2 @@
+deployment:
+  apiVersion: extensions/v1beta1

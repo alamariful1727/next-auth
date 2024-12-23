@@ -31,6 +31,13 @@ Map configuration = [
                 ],
             ],        
             publishHelmCharts: true,
+        ],
+        integration : [
+            enabled: true,
+            federation: 'naads',
+            test: [
+                enabled: false
+            ]
         ]
 ]
 

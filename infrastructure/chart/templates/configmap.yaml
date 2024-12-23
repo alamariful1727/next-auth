@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ required "A valid value for product is required!" .Values.product | lower -}}-base-config
+  namespace: {{ .Values.team }}-{{ .Values.environment }}
+  labels:
+    {{- include "micro-services.labels" . | nindent 4 }}
+data:
+  NETWORK_TIMEOUT_MS: {{ .Values.network.timeout | quote }}
+  LOGGING_LEVEL: {{ .Values.logLevel | quote }}
+  PORT: {{ .Values.port | quote }}
+  #NODE_ENV: {{ .Values.environment }}
+  # INTEGRATION: {{ .Values.INTEGRATION }}
+
+---
+{{- /* Additional configmap is included using tpl function since template has an include statement */ -}}
+{{ $config := default "" .Values.additionalConfigmaps }}
+{{ tpl $config . }}

@@ -1,0 +1,52 @@
+deployment:
+  dnsPrefix: managerui-integration
+  dnsPostfix: alertready.ca
+  apiVersion: apps/v1
+  clusterPrefix: managerui
+  clusterPostfix: naads.ca
+
+port: 8080
+
+# INTEGRATION: "http://34.107.173.90"
+# STAGING: "http://35.203.68.190"
+
+imageRepository: "pelmorex-naads-docker.jfrog.io"
+
+logLevel: "DEBUG"
+
+network:
+  timeout: 2000
+  grpcEnabled: false
+
+replicas:
+  min: 1
+  max: 1
+
+resources:
+  requests:
+    cpu: "50m"
+    memory: "64Mi"
+  limits:
+    cpu: "200m"
+    memory: "256Mi"
+
+basePath:
+  - "/"
+
+checks:
+  health: "/healthz"
+  ready: "/healthz"
+
+additionalConfigmaps: |
+  apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: alert-manager-ui-additional-config
+    labels:
+      {{- include "micro-services.labels" . | nindent 4 }}
+  data:
+    CONFIG: "alert-manager-ui-config"
+
+additionalEnvFrom: |
+  - configMapRef:
+      name: alert-manager-ui-additional-config
