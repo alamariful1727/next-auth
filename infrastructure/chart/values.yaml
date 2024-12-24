@@ -34,8 +34,8 @@ basePath:
   - "/"
 
 checks:
-  health: "/healthz"
-  ready: "/healthz"
+  health: "/api/healthz"
+  ready: "/api/healthz"
 
 additionalConfigmaps: |
   apiVersion: v1
