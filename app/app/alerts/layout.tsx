@@ -3,6 +3,7 @@
 import clsx from "clsx";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 const navigation = [
   { name: "All Alerts", href: "/alerts", type: "all" },
@@ -15,11 +16,23 @@ const AlertLayout = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
+  return (
+    <Suspense fallback={<div className="text-center">Loading...</div>}>
+      <AlertLayoutContent>{children}</AlertLayoutContent>
+    </Suspense>
+  );
+};
+
+const AlertLayoutContent = ({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) => {
   const searchParams = useSearchParams();
   const currentAlertType = (searchParams?.get("type") || "all")
     .toLocaleLowerCase()
     .trim();
-  
+
   return (
     <div className="space-y-5">
       <div className="flex h-14 items-center border-b border-gray-200 bg-white">
@@ -42,7 +55,7 @@ const AlertLayout = ({
       </div>
       {children}
     </div>
-  )
-}
+  );
+};
 
 export default AlertLayout;
