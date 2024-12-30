@@ -1,1 +1,0 @@
-# Functional Tests using Puppeteer and Wiremock.
