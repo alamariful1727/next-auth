@@ -1,16 +1,16 @@
-import NextAuth from "next-auth"
+import NextAuth from "next-auth";
 import Auth0Provider from "next-auth/providers/auth0";
 
-export const authOptions = {
+const options = {
   providers: [
     Auth0Provider({
       clientId: process.env.AUTH0_CLIENT_ID!,
       clientSecret: process.env.AUTH0_CLIENT_SECRET!,
-      issuer: process.env.AUTH0_ISSUER!
+      issuer: process.env.AUTH0_ISSUER!,
     }),
   ],
 };
 
-export const handler = NextAuth(authOptions); 
+const handler = NextAuth(options);
 
-export { handler as GET, handler as POST};
+export { handler as GET, handler as POST };
