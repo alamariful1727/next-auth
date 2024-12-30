@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'www.alertready.ca',
       },
+      {
+        protocol: 'https',
+        hostname: 's.gravatar.com',
+      },
     ],
   },
 };
